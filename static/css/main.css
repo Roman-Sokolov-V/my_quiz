@@ -1,0 +1,76 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f6fa;
+  color: #2f3640;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #1e90ff;
+  margin-bottom: 20px;
+}
+
+
+.label {
+  font-weight: bold;
+  color: #555;
+}
+
+.sidebar-nav {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between; /* розподіл по ширині */
+  align-items: center;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-secondary {
+  background-color: #1e90ff;
+  color: #ffffff;
+}
+
+.btn-secondary:hover {
+  background-color: #187bcd;
+  box-shadow: 0 4px 10px rgba(30, 144, 255, 0.3);
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+  color: #ffffff;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b;
+  box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
+}
+
+
+
+.btn-neutral {
+  background-color: #b0aca2;
+  color: #ffffff;
+}
+
+.btn-neutral:hover {
+  background-color: #99968e;
+  box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
+}
