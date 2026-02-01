@@ -1,0 +1,7 @@
+<form method="post" action="{% url 'user:logout' %}" id="logout-form">
+    {% csrf_token %}
+</form>
+
+<script>
+document.getElementById('logout-form').submit();
+</script>

@@ -21,5 +21,5 @@ from quiz.views import home_page
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page, name='home-page'),
-    path('user/', include('user.urls', namespace='user')),
+    path('users/', include('user.urls', namespace='user')),
 ]

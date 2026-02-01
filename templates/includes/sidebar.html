@@ -1,9 +1,16 @@
 {% load static %}
 <div class="container">
   <div class="sidebar-nav">
-    <a href="#" class="btn btn-neutral">Home</a>
-    <a href="#" class="btn btn-neutral">Login</a>
-    <a href="#" class="btn btn-neutral">Logout</a>
+    <a href="{% url 'home-page' %}" class="btn btn-neutral">Home</a>
+
+    {% if user.is_authenticated %}
+    <a href="{% url 'user:logout-link' %}" class="btn btn-neutral">
+    Logout
+    </a>
+
+    {% else %}
+        <a href="{% url 'user:login' %}" class="btn btn-neutral">Login</a>
+    {% endif %}
     <a href="#" class="btn btn-neutral">Let QUIZ</a>
     <a href="#" class="btn btn-neutral">Create Quiz</a>
 
