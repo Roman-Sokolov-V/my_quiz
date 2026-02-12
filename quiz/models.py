@@ -1,10 +1,22 @@
 from django.db import models
-from quiz.settings import AUTH_USER_MODEL
+from config.settings import AUTH_USER_MODEL
 
 
 class Category(models.Model):
     name = models.CharField(max_length=250)
     description = models.TextField(null=True, blank=True)
+    parent = models.ForeignKey(
+        "self",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="children",
+    )
+    class Meta:
+        verbose_name_plural = "Categories"
+
+    def __str__(self):
+        return self.name
 
 class Question(models.Model):
     text = models.TextField()
@@ -16,9 +28,9 @@ class Answer(models.Model):
     is_correct = models.BooleanField(default=False)
 
 DIFFICULTY_CHOICES = (
-    (1, "Easy"),
-    (2, "Medium"),
-    (3, "Hard"),
+    ("easy", "Easy"),
+    ("medium", "Medium"),
+    ("hard", "Hard"),
 )
 
 RATING_CHOICES = (
