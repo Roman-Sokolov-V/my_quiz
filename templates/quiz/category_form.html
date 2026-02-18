@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+  <title>  Question create  </title>
+{% endblock %}
+
+
+{% block content %}
+    {% if error  %}
+        <h1> {{ error }}</h1>
+    {%  endif %}
+
+    <h1>Category create</h1>
+
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Save</button>
+    </form>
+
+{% endblock %}
