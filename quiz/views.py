@@ -1,12 +1,12 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpRequest, HttpResponse
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views import generic
 from django.urls import reverse, reverse_lazy
 
 
-from quiz.forms import QuizCreateForm, QuestionCreateForm, AnswerFormSet
+from quiz.forms import QuizCreateForm, QuestionCreateForm, AnswerFormSet, CategoryCreateForm
 from quiz.models import Question, Answer, Quiz, Category
 
 #
@@ -48,7 +48,10 @@ from quiz.models import Question, Answer, Quiz, Category
 #         },
 #     )
 
-
+class CategoryCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Category
+    form_class = CategoryCreateForm
+    success_url = reverse_lazy("home-page")
 
 
 class QuizCreateView(LoginRequiredMixin, generic.CreateView):
@@ -57,14 +60,14 @@ class QuizCreateView(LoginRequiredMixin, generic.CreateView):
     #fields = ""name", "description", "categories", "difficulty""
 
     def get_success_url(self):
-        return reverse_lazy("quiz:question_create", kwargs={"pk": self.object.pk})
+        return reverse_lazy("quiz:question-create", kwargs={"pk": self.object.pk})
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
 @login_required
-def questions_create(request: HttpRequest, pk) -> HttpResponse:
+def questions_create(request: HttpRequest, pk) -> None | HttpResponseRedirect | HttpResponse:
     quiz = Quiz.objects.get(pk=pk)
     if request.method == "POST":
         question_form = QuestionCreateForm(request.POST)
