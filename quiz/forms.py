@@ -6,7 +6,7 @@ from quiz.models import Question, Answer, Quiz, Category
 class CategoryCreateForm(forms.ModelForm):
     class Meta:
         model = Category
-        fields = ("name", "description")
+        fields = ("name", "description", "parent")
 
 
 def get_category_choices():
