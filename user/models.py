@@ -87,6 +87,7 @@ class User(AbstractUser):
         blank=True,
     )
     email = models.EmailField(_("email address"), unique=True)
+    is_author = models.BooleanField(default=False)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
