@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models import Q
+
 from config.settings import AUTH_USER_MODEL
 
 
@@ -14,6 +16,12 @@ class Category(models.Model):
     )
     class Meta:
         verbose_name_plural = "Categories"
+        constraints = [
+            models.UniqueConstraint(fields=["name", "parent"], name="unique_parent_children"),
+            models.UniqueConstraint(
+                fields=["name"], condition=Q(parent__isnull=True), name="unique_root_category"
+            ),
+        ]
 
     def __str__(self):
         return self.name
