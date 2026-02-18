@@ -10,9 +10,11 @@
 
     {% else %}
         <a href="{% url 'user:login' %}" class="btn btn-neutral">Login</a>
+        <a href="{% url 'user:register' %}" class="btn btn-neutral">Register</a>
     {% endif %}
     <a href="#" class="btn btn-neutral">Let QUIZ</a>
-    <a href="{% url 'quiz:quiz_create' %}" class="btn btn-neutral">Create Quiz</a>
+    <a href="{% url 'quiz:quiz-create' %}" class="btn btn-neutral">Create Quiz</a>
+    <a href="{% url 'quiz:category-create' %}" class="btn btn-neutral">Create Category</a>
 
   </div>
 </div>
